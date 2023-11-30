@@ -32,7 +32,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Publish
         run: |
-          docker build . --file aarch64.Dockerfile --platform linux/arm64 --tag ${{ env.OWNER }}/arm64-code-server:latest --push
-          docker build . --file x86_64.Dockerfile --platform linux/amd64 --tag ${{ env.OWNER }}/amd64-code-server:latest --push
-          docker manifest create ${{ env.OWNER }}/code-server:latest ${{ env.OWNER }}/arm64-code-server:latest ${{ env.OWNER }}/amd64-code-server:latest
-          docker manifest push ${{ env.OWNER }}/code-server:latest
+          docker build . --file aarch64.Dockerfile --platform linux/arm64 --tag ghcr.io/${{ env.OWNER }}/arm64-code-server:latest --push
+          docker build . --file x86_64.Dockerfile --platform linux/amd64 --tag ghcr.io/${{ env.OWNER }}/amd64-code-server:latest --push
+          docker manifest create ghcr.io/${{ env.OWNER }}/code-server:latest ghcr.io/${{ env.OWNER }}/arm64-code-server:latest ghcr.io/${{ env.OWNER }}/amd64-code-server:latest
+          docker manifest push ghcr.io/${{ env.OWNER }}/code-server:latest
